@@ -710,29 +710,63 @@ const About = () => {
    ÉVÉNEMENTS — RESPONSIVE
 ══════════════════════════════════════════ */
 const Evenements = () => {
-  const [tab, setTab] = useState("aVenir");
+  const [tab, setTab] = useState("passes");
   const { isMobile, isTablet } = useBreakpoint();
 
   const passes = [
     {
-      titre: "Akwaba aux Nouveaux",
-      date: "Mercredi 14/11/2025",
-      heure: "13H – 14H",
-      lieu: "Amphithéâtre ESATIC",
-      desc: "Cérémonie d'accueil officielle des nouveaux étudiants de la Promotion IT11. Un moment de partage et de fraternité.",
+      titre: "Accueil des nouveaux étudiants",
+      date: "14/11/2025",
+      heure: "Terminé",
+      lieu: "ESATIC",
+      desc: "Activité visant à accueillir les nouveaux étudiants admis en Master après le concours d’entrée.",
       icon: "party",
       color: C.blue,
       photos: true,
+      highlight: false,
+    },
+    {
+      titre: "Participation à Olympia IT",
+      date: "04/12/2025",
+      heure: "Terminé",
+      lieu: "ESATIC",
+      desc: "La promotion IT 11 a participé activement à l’événement organisé par le C2E, où nous avons terminé 2ᵉ de la compétition",
+      icon: "trophy",
+      color: C.purple,
+      photos: true,
+      highlight: false,
+    },
+    {
+      titre: "Action sociale",
+      date: "03/12/2025 & 05/02/2026",
+      heure: "Terminé",
+      lieu: "Externe",
+      desc: "La promotion IT a participé à deux reprises pour soutenir nos camarades ayant perdu leurs parents, avec une contribution totale de 173 000 FCFA.",
+      icon: "users",
+      color: C.orange,
+      photos: false,
+      highlight: false,
     },
   ];
 
-  const aVenir = [
+  const enCours = [
     {
-      titre: "Randonnée IT11",
-      date: "Bientôt — Date à confirmer",
-      heure: "À définir",
-      lieu: "À définir",
-      desc: "La grande randonnée de cohésion de la Promotion IT11. Préparation physique, team building et découverte de la nature ivoirienne.",
+      titre: "Cours de préparation et d’accompagnement",
+      date: "Depuis le 08/02/2026",
+      heure: "En cours",
+      lieu: "ESATIC / En ligne",
+      desc: "Après les résultats de la première session, nous avons organisé des équipes de travail afin d’améliorer nos performances académiques.",
+      icon: "fileText",
+      color: C.blue,
+      highlight: true,
+      image: false,
+    },
+    {
+      titre: "Activité de détente",
+      date: "21/03/2026",
+      heure: "En cours de préparation",
+      lieu: "Forêt du Banco",
+      desc: "La promotion IT 11 organise “La Randonnée des 11” : une sortie détente prévue à la forêt du Banco.",
       icon: "hiking",
       color: C.green,
       highlight: true,
@@ -740,7 +774,49 @@ const Evenements = () => {
     },
   ];
 
-  const events = tab === "aVenir" ? aVenir : passes;
+  const aVenir = [
+    {
+      titre: "Conférence sur les opportunités d’études et d’emploi",
+      date: "Mai 2026",
+      heure: "À venir",
+      lieu: "ESATIC",
+      desc: "La promotion IT 11 invitera d’anciens étudiants d’ESATIC pour une conférence de partage d’expériences en fin d’année.",
+      icon: "briefcase",
+      color: C.red,
+      highlight: true,
+      image: false,
+    },
+    {
+      titre: "After Work du bureau",
+      date: "Juin 2026",
+      heure: "À venir",
+      lieu: "À définir",
+      desc: "Le bureau de la promotion organisera une activité de clôture pour marquer la fin des travaux accomplis.",
+      icon: "party",
+      color: C.orange,
+      highlight: true,
+      image: false,
+    },
+  ];
+
+  const events = tab === "aVenir" ? aVenir : tab === "enCours" ? enCours : passes;
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [tab]);
+
+  useEffect(() => {
+    if (events.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % events.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [events.length, currentIndex]);
+
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % events.length);
+  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + events.length) % events.length);
 
   return (
     <section id="evenements" style={{ padding: isTablet ? "60px 20px" : "90px 56px", background: C.soft, fontFamily: "'Outfit',sans-serif" }}>
@@ -752,7 +828,7 @@ const Evenements = () => {
             Les moments forts qui construisent l'esprit de la Promotion IT11.
           </p>
           <div style={{ display: "inline-flex", background: "rgba(26,108,232,.08)", borderRadius: 40, padding: 4, marginBottom: 44, gap: 4 }}>
-            {[{ k: "aVenir", label: "À venir" }, { k: "passes", label: "Passés" }].map(t => (
+            {[{ k: "passes", label: "Passés" }, { k: "enCours", label: "En cours" }, { k: "aVenir", label: "À venir" }].map(t => (
               <button key={t.k} onClick={() => setTab(t.k)}
                 style={{
                   padding: "8px 22px", borderRadius: 36, border: "none", cursor: "pointer", fontSize: 13, fontWeight: 700, letterSpacing: .5, transition: "all .22s", fontFamily: "'Outfit',sans-serif",
@@ -765,72 +841,92 @@ const Evenements = () => {
           </div>
         </FadeIn>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          {events.map((ev, i) => (
-            <FadeIn key={ev.titre} delay={i * 80}>
-              <div style={{ background: "#fff", borderRadius: 22, overflow: "hidden", border: `1px solid ${ev.highlight ? "rgba(22,163,74,.25)" : "rgba(26,108,232,.10)"}`, boxShadow: ev.highlight ? "0 12px 40px rgba(22,163,74,.12)" : "0 4px 20px rgba(26,108,232,.06)", display: "grid", gridTemplateColumns: ev.image && !isMobile ? (isTablet ? "240px 1fr" : "340px 1fr") : "1fr", alignItems: "stretch" }}>
+        <FadeIn delay={100}>
+          <div style={{ position: "relative", overflow: "hidden", padding: "10px 0" }}>
+            <div style={{ display: "flex", transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)", transform: `translateX(-${currentIndex * 100}%)`, alignItems: "stretch" }}>
+              {events.map((ev, i) => (
+                <div key={ev.titre} style={{ minWidth: "100%", flexShrink: 0, padding: "0 8px", boxSizing: "border-box" }}>
+                  <div style={{ height: "100%", background: "#fff", borderRadius: 22, overflow: "hidden", border: `1px solid ${ev.highlight ? "rgba(22,163,74,.25)" : "rgba(26,108,232,.10)"}`, boxShadow: ev.highlight ? "0 12px 40px rgba(22,163,74,.12)" : "0 4px 20px rgba(26,108,232,.06)", display: "grid", gridTemplateColumns: ev.image && !isMobile ? (isTablet ? "240px 1fr" : "340px 1fr") : "1fr", alignItems: "stretch" }}>
 
-                {ev.image && !isMobile && (
-                  <div style={{ position: "relative", background: "#1a2a1a", overflow: "hidden", minHeight: 260 }}>
-                    <img src={rand} alt="Randonnée IT11" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: .9 }} />
-                    {ev.highlight && (
-                      <div style={{ position: "absolute", top: 16, left: 16, background: "#16a34a", color: "#fff", fontSize: 10, fontWeight: 800, letterSpacing: 2, textTransform: "uppercase", padding: "5px 14px", borderRadius: 20, display: "flex", alignItems: "center", gap: 5 }}>
-                        <span style={{ width: 6, height: 6, background: "#fff", borderRadius: "50%", animation: "pulse 1.5s infinite" }} /> À venir
+                    {ev.image && !isMobile && (
+                      <div style={{ position: "relative", background: "#1a2a1a", overflow: "hidden", minHeight: 260 }}>
+                        <img src={rand} alt="Randonnée IT11" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: .9 }} />
+                        {ev.highlight && (
+                          <div style={{ position: "absolute", top: 16, left: 16, background: "#16a34a", color: "#fff", fontSize: 10, fontWeight: 800, letterSpacing: 2, textTransform: "uppercase", padding: "5px 14px", borderRadius: 20, display: "flex", alignItems: "center", gap: 5 }}>
+                            <span style={{ width: 6, height: 6, background: "#fff", borderRadius: "50%", animation: "pulse 1.5s infinite" }} /> À venir
+                          </div>
+                        )}
                       </div>
                     )}
-                  </div>
-                )}
 
-                {/* Mobile image banner */}
-                {ev.image && isMobile && (
-                  <div style={{ position: "relative", height: 180, background: "#1a2a1a", overflow: "hidden" }}>
-                    <img src={rand} alt="Randonnée IT11" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: .9 }} />
-                    {ev.highlight && (
-                      <div style={{ position: "absolute", top: 12, left: 12, background: "#16a34a", color: "#fff", fontSize: 10, fontWeight: 800, letterSpacing: 2, textTransform: "uppercase", padding: "4px 12px", borderRadius: 20, display: "flex", alignItems: "center", gap: 5 }}>
-                        <span style={{ width: 6, height: 6, background: "#fff", borderRadius: "50%", animation: "pulse 1.5s infinite" }} /> À venir
+                    {/* Mobile image banner */}
+                    {ev.image && isMobile && (
+                      <div style={{ position: "relative", height: 180, background: "#1a2a1a", overflow: "hidden" }}>
+                        <img src={rand} alt="Randonnée IT11" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: .9 }} />
+                        {ev.highlight && (
+                          <div style={{ position: "absolute", top: 12, left: 12, background: "#16a34a", color: "#fff", fontSize: 10, fontWeight: 800, letterSpacing: 2, textTransform: "uppercase", padding: "4px 12px", borderRadius: 20, display: "flex", alignItems: "center", gap: 5 }}>
+                            <span style={{ width: 6, height: 6, background: "#fff", borderRadius: "50%", animation: "pulse 1.5s infinite" }} /> À venir
+                          </div>
+                        )}
                       </div>
                     )}
-                  </div>
-                )}
 
-                <div style={{ padding: isMobile ? "22px 20px" : "32px 36px" }}>
-                  {!ev.image && (
-                    <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: ev.highlight ? "rgba(22,163,74,.12)" : C.light, borderRadius: 20, padding: "4px 14px", marginBottom: 14, fontSize: 10, fontWeight: 800, letterSpacing: 2, textTransform: "uppercase", color: ev.highlight ? C.green : C.muted }}>
-                      {ev.highlight ? "À venir" : "Terminé"}
-                    </div>
-                  )}
-                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
-                    <div style={{ width: 44, height: 44, borderRadius: 12, background: `${ev.color}18`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <Ic n={ev.icon} size={22} color={ev.color} />
-                    </div>
-                    <h3 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: isMobile ? 24 : 28, letterSpacing: 2, color: C.dark, lineHeight: 1 }}>{ev.titre}</h3>
-                  </div>
-
-                  <p style={{ fontSize: 14, color: C.muted, lineHeight: 1.75, marginBottom: 20 }}>{ev.desc}</p>
-
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 24 }}>
-                    {[
-                      { icon: "calendar", val: ev.date },
-                      { icon: "clock", val: ev.heure },
-                      { icon: "mapPin", val: ev.lieu },
-                    ].map(d => (
-                      <div key={d.icon} style={{ display: "flex", alignItems: "center", gap: 8, background: C.soft, borderRadius: 10, padding: "7px 12px" }}>
-                        <Ic n={d.icon} size={14} color={C.bright} />
-                        <span style={{ fontSize: 12, fontWeight: 600, color: C.text }}>{d.val}</span>
+                    <div style={{ padding: isMobile ? "22px 20px" : "32px 36px" }}>
+                      {!ev.image && (
+                        <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: ev.highlight ? "rgba(22,163,74,.12)" : C.light, borderRadius: 20, padding: "4px 14px", marginBottom: 14, fontSize: 10, fontWeight: 800, letterSpacing: 2, textTransform: "uppercase", color: ev.highlight ? C.green : C.muted }}>
+                          {ev.highlight ? "À venir" : "Terminé"}
+                        </div>
+                      )}
+                      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
+                        <div style={{ width: 44, height: 44, borderRadius: 12, background: `${ev.color}18`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                          <Ic n={ev.icon} size={22} color={ev.color} />
+                        </div>
+                        <h3 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: isMobile ? 24 : 28, letterSpacing: 2, color: C.dark, lineHeight: 1 }}>{ev.titre}</h3>
                       </div>
-                    ))}
-                  </div>
 
-                  {ev.highlight ? (
-                    <Btn href="#contact" variant="green">Participer <Ic n="arrowRight" size={15} /></Btn>
-                  ) : (
-                    <Btn href="#galerie" variant="outline" style={{ fontSize: 12 }}>Voir les photos <Ic n="image" size={14} color={C.blue} /></Btn>
-                  )}
+                      <p style={{ fontSize: 14, color: C.muted, lineHeight: 1.75, marginBottom: 20 }}>{ev.desc}</p>
+
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 24 }}>
+                        {[
+                          { icon: "calendar", val: ev.date },
+                          { icon: "clock", val: ev.heure },
+                          { icon: "mapPin", val: ev.lieu },
+                        ].map(d => (
+                          <div key={d.icon} style={{ display: "flex", alignItems: "center", gap: 8, background: C.soft, borderRadius: 10, padding: "7px 12px" }}>
+                            <Ic n={d.icon} size={14} color={C.bright} />
+                            <span style={{ fontSize: 12, fontWeight: 600, color: C.text }}>{d.val}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {ev.highlight ? (
+                        <Btn href="#contact" variant="green">Participer <Ic n="arrowRight" size={15} /></Btn>
+                      ) : (
+                        <Btn href="#galerie" variant="outline" style={{ fontSize: 12 }}>Voir les photos <Ic n="image" size={14} color={C.blue} /></Btn>
+                      )}
+                    </div>
+                  </div>
                 </div>
+              ))}
+            </div>
+
+            {events.length > 1 && (
+              <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 24, marginTop: 32 }}>
+                <button onClick={prevSlide} style={{ width: 44, height: 44, borderRadius: "50%", background: "#fff", border: "1px solid rgba(26,108,232,.15)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", boxShadow: "0 4px 14px rgba(0,0,0,.06)", transform: "rotate(180deg)", color: C.blue, transition: "all .2s" }}>
+                  <Ic n="arrowRight" size={18} color={C.blue} />
+                </button>
+                <div style={{ display: "flex", gap: 10 }}>
+                  {events.map((_, i) => (
+                    <button key={i} onClick={() => setCurrentIndex(i)} style={{ width: i === currentIndex ? 28 : 10, height: 10, borderRadius: 10, background: i === currentIndex ? C.blue : "rgba(26,108,232,0.2)", transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)", border: "none", cursor: "pointer", padding: 0 }} />
+                  ))}
+                </div>
+                <button onClick={nextSlide} style={{ width: 44, height: 44, borderRadius: "50%", background: "#fff", border: "1px solid rgba(26,108,232,.15)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", boxShadow: "0 4px 14px rgba(0,0,0,.06)", color: C.blue, transition: "all .2s" }}>
+                  <Ic n="arrowRight" size={18} color={C.blue} />
+                </button>
               </div>
-            </FadeIn>
-          ))}
-        </div>
+            )}
+          </div>
+        </FadeIn>
       </div>
     </section>
   );
