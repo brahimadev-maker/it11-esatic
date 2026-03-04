@@ -619,7 +619,7 @@ const Stats = () => {
   const { isMobile } = useBreakpoint();
   return (
     <div style={{ background: `linear-gradient(90deg,${C.blue},${C.bright})`, padding: isMobile ? "20px 16px" : "24px 56px", display: "flex", justifyContent: "space-around", alignItems: "center", gap: isMobile ? 0 : 20, flexWrap: "wrap", fontFamily: "'Outfit',sans-serif" }}>
-      {[{ n: "IT11", l: "Promotion" }, { n: "2025", l: "Année" }, { n: "ESATIC", l: "École" }, { n: "ABJ", l: "Abidjan, CI" }].map((s, i) => (
+      {[{ n: "IT11", l: "Promotion" }, { n: "2025", l: "Année" }, { n: "ESATIC", l: "École" }, { n: "200+", l: "MEMB." }].map((s, i) => (
         <div key={s.n} style={{ display: "flex", alignItems: "center", gap: isMobile ? 0 : 18, flex: isMobile ? "1 1 50%" : "unset", justifyContent: "center", padding: isMobile ? "8px 0" : 0 }}>
           {!isMobile && i > 0 && <div style={{ width: 1, height: 42, background: "rgba(255,255,255,.22)" }} />}
           <div style={{ textAlign: "center" }}>
