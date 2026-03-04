@@ -199,7 +199,7 @@ const Navbar = ({ active, setActive }) => {
         {!isTablet && (
           <div style={{ display: "flex", gap: 7 }}>
             {["facebook", "instagram", "linkedin", "youtube"].map(s => (
-              <a key={s} href="#" style={{ width: 30, height: 30, borderRadius: "50%", background: C.light, border: "1px solid rgba(26,108,232,.18)", display: "flex", alignItems: "center", justifyContent: "center", color: C.bright, textDecoration: "none" }}>
+              <a key={s} href="/" style={{ width: 30, height: 30, borderRadius: "50%", background: C.light, border: "1px solid rgba(26,108,232,.18)", display: "flex", alignItems: "center", justifyContent: "center", color: C.bright, textDecoration: "none" }}>
                 <Ic n={s} size={14} />
               </a>
             ))}
@@ -256,7 +256,7 @@ const Navbar = ({ active, setActive }) => {
               <div style={{ fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: C.muted, marginBottom: 12 }}>Suivez-nous</div>
               <div style={{ display: "flex", gap: 10 }}>
                 {["facebook", "instagram", "linkedin", "youtube"].map(s => (
-                  <a key={s} href="#" style={{ width: 38, height: 38, borderRadius: "50%", background: C.light, border: "1px solid rgba(26,108,232,.18)", display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}>
+                  <a key={s} href="/" style={{ width: 38, height: 38, borderRadius: "50%", background: C.light, border: "1px solid rgba(26,108,232,.18)", display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}>
                     <Ic n={s} size={16} color={C.bright} />
                   </a>
                 ))}
@@ -326,7 +326,7 @@ const Hero = () => {
       {!isTablet && (
         <div style={{ position:"absolute",right:70,bottom:20,zIndex:1,width:380,height:"80%",display:"flex",alignItems:"flex-end",justifyContent:"center" }}>
           <div style={{ width:"100%",height:"100%",borderTopLeftRadius:220,borderTopRightRadius:220,background:C.light,border:"2px dashed rgba(26,108,232,.2)",overflow:"hidden" }}>
-            {right && <img src={right} alt="Photo promotion" style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />}
+            {right && <img src={right} alt="Promotion" style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />}
           </div>
         </div>
       )}
@@ -406,11 +406,11 @@ const About = () => {
         <FadeIn delay={140}>
           <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gridTemplateRows:"180px 180px",gap:10 }}>
             <div style={{ gridRow:"span 2",borderRadius:16,background:C.light,border:"2px dashed rgba(26,108,232,.18)",overflow:"hidden" }}>
-              <img src="" alt="Photo promo" style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />
+              <img src="" alt="Promo" style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />
             </div>
             {[2,3].map(n=>(
               <div key={n} style={{ borderRadius:14,background:C.light,border:"2px dashed rgba(26,108,232,.18)",overflow:"hidden" }}>
-                <img src="" alt={`Photo ${n}`} style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />
+                <img src="" alt={`${n}`} style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />
               </div>
             ))}
           </div>
@@ -729,7 +729,7 @@ const Galerie = () => {
             <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginTop:32 }}>
               {[1,2,3,4].map(n=>(
                 <div key={n} style={{ borderRadius:14,background:C.light,border:"2px dashed rgba(26,108,232,.18)",overflow:"hidden",aspectRatio:"1" }}>
-                  <img src="" alt={`Photo ${n}`} style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />
+                  <img src="" alt={`${n}`} style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />
                 </div>
               ))}
             </div>
@@ -740,7 +740,7 @@ const Galerie = () => {
               </div>
               {[2,3,4,5].slice(0, isTablet ? 3 : 4).map(n=>(
                 <div key={n} style={{ borderRadius:14,background:C.light,border:"2px dashed rgba(26,108,232,.18)",overflow:"hidden" }}>
-                  <img src="" alt={`Photo ${n}`} style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />
+                  <img src="" alt={`${n}`} style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />
                 </div>
               ))}
             </div>
