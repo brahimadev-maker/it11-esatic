@@ -736,7 +736,7 @@ const Galerie = () => {
           ) : (
             <div style={{ display:"grid",gridTemplateColumns: isTablet ? "1fr 1fr" : "2fr 1fr 1fr",gridTemplateRows: isTablet ? "220px 220px" : "220px 220px",gap:12,marginTop:36 }}>
               <div style={{ gridRow: isTablet ? "span 1" : "span 2",borderRadius:18,background:C.light,border:"2px dashed rgba(26,108,232,.18)",overflow:"hidden" }}>
-                <img src="" alt="Photo galerie principale" style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />
+                <img src="" alt="Galerie principale" style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />
               </div>
               {[2,3,4,5].slice(0, isTablet ? 3 : 4).map(n=>(
                 <div key={n} style={{ borderRadius:14,background:C.light,border:"2px dashed rgba(26,108,232,.18)",overflow:"hidden" }}>
@@ -769,7 +769,7 @@ const Footer = () => {
             </p>
             <div style={{ display:"flex",gap:9 }}>
               {["facebook","instagram","linkedin","youtube"].map(s=>(
-                <a key={s} href="#" style={{ width:34,height:34,borderRadius:"50%",background:"rgba(255,255,255,.07)",border:"1px solid rgba(255,255,255,.12)",display:"flex",alignItems:"center",justifyContent:"center",textDecoration:"none",transition:"all .2s" }}>
+                <a key={s} href="/" style={{ width:34,height:34,borderRadius:"50%",background:"rgba(255,255,255,.07)",border:"1px solid rgba(255,255,255,.12)",display:"flex",alignItems:"center",justifyContent:"center",textDecoration:"none",transition:"all .2s" }}>
                   <Ic n={s} size={14} color="rgba(255,255,255,.55)" />
                 </a>
               ))}
