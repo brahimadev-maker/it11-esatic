@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import right from "../src/Images/right.png"
 import logo from "../src/Images/logo.png"
 import rand from "../src/Images/event2.png"
+import Gal1 from "../src/Images/Gal1.png"
 
 
 /* ─────────────────────────────────────────
@@ -825,18 +826,18 @@ const Galerie = () => {
             <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginTop:32 }}>
               {[1,2,3,4].map(n=>(
                 <div key={n} style={{ borderRadius:14,background:C.light,border:"2px dashed rgba(26,108,232,.18)",overflow:"hidden",aspectRatio:"1" }}>
-                  <img src="" alt={`${n}`} style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />
+                  <img src={Gal1} alt={`${n}`} style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />
                 </div>
               ))}
             </div>
           ) : (
             <div style={{ display:"grid",gridTemplateColumns: isTablet ? "1fr 1fr" : "2fr 1fr 1fr",gridTemplateRows: isTablet ? "220px 220px" : "220px 220px",gap:12,marginTop:36 }}>
               <div style={{ gridRow: isTablet ? "span 1" : "span 2",borderRadius:18,background:C.light,border:"2px dashed rgba(26,108,232,.18)",overflow:"hidden" }}>
-                <img src="" alt="Galerie principale" style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />
+                <img src={Gal1} alt="Galerie principale" style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />
               </div>
               {[2,3,4,5].slice(0, isTablet ? 3 : 4).map(n=>(
                 <div key={n} style={{ borderRadius:14,background:C.light,border:"2px dashed rgba(26,108,232,.18)",overflow:"hidden" }}>
-                  <img src="" alt={`${n}`} style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />
+                  <img src={`Gal${n}`}alt={`${n}`} style={{ width:"100%",height:"100%",objectFit:"cover",display:"block" }} />
                 </div>
               ))}
             </div>
