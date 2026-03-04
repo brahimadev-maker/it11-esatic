@@ -1,43 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+
+    <!-- ═══════════════════════════════════════
+         VIEWPORT & THEME
+    ═══════════════════════════════════════ -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta name="theme-color" content="#0170bf" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <!-- ═══════════════════════════════════════
+         FAVICON
+    ═══════════════════════════════════════ -->
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/logo.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/logo.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/logo.png" />
+<link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- ═══════════════════════════════════════
+         PRIMARY SEO
+    ═══════════════════════════════════════ -->
+    <title>Promotion IT11 — ESATIC | La Génération qui Code l'Avenir</title>
+    <meta name="description" content="Site officiel de la Promotion IT11 de l'ESATIC — École Supérieure Africaine des TIC. Retrouvez les événements, opportunités de stage et d'emploi, membres du bureau et la galerie de la 11ème promotion. Abidjan, Côte d'Ivoire." />
+    <meta name="keywords" content="Promotion IT11, ESATIC, école supérieure TIC, Côte d'Ivoire, ingénierie informatique, Abidjan, génie logiciel, cybersécurité, réseaux télécoms, stage emploi Côte d'Ivoire, étudiants ESATIC, IT11 ESATIC" />
+    <meta name="author" content="Promotion IT11 — ESATIC" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.it11-esatic.com/" />
+
+    <!-- ═══════════════════════════════════════
+         OPEN GRAPH (Facebook, WhatsApp, LinkedIn)
+    ═══════════════════════════════════════ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Promotion IT11 — ESATIC" />
+    <meta property="og:title" content="Promotion IT11 — ESATIC | La Génération qui Code l'Avenir" />
+    <meta property="og:description" content="Site officiel de la Promotion IT11 de l'ESATIC. Événements, stages, emplois et vie de la 11ème promotion d'ingénieurs TIC de Côte d'Ivoire." />
+    <meta property="og:url" content="https://www.it11-esatic.com/" />
+    <meta property="og:image" content="https://www.it11-esatic.com/logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Promotion IT11 ESATIC — Abidjan, Côte d'Ivoire" />
+    <meta property="og:locale" content="fr_CI" />
+
+    <!-- ═══════════════════════════════════════
+         TWITTER / X CARD
+    ═══════════════════════════════════════ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Promotion IT11 — ESATIC | La Génération qui Code l'Avenir" />
+    <meta name="twitter:description" content="Site officiel de la Promotion IT11 de l'ESATIC. Événements, stages, emplois et vie de la 11ème promotion d'ingénieurs TIC de Côte d'Ivoire." />
+    <meta name="twitter:image" content="https://www.it11-esatic.com/logo.png" />
+    <meta name="twitter:image:alt" content="Promotion IT11 ESATIC — Abidjan, Côte d'Ivoire" />
+
+    <!-- ═══════════════════════════════════════
+         GEO — LOCALISATION CÔTE D'IVOIRE
+    ═══════════════════════════════════════ -->
+    <meta name="geo.region" content="CI-AB" />
+    <meta name="geo.placename" content="Abidjan, Côte d'Ivoire" />
+    <meta name="geo.position" content="5.3600;-4.0083" />
+    <meta name="ICBM" content="5.3600, -4.0083" />
+
+    <!-- ═══════════════════════════════════════
+         STRUCTURED DATA — JSON-LD
+    ═══════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.it11-esatic.com/#organization",
+          "name": "Promotion IT11 — ESATIC",
+          "alternateName": "IT11 ESATIC",
+          "url": "https://www.it11-esatic.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.it11-esatic.com/logo.png"
+          },
+          "description": "La Promotion IT11 est la onzième promotion de l'ESATIC, école d'ingénieurs spécialisée en TIC en Côte d'Ivoire. Une génération de passionnés du numérique basée à Abidjan.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "ESATIC",
+            "addressLocality": "Abidjan",
+            "addressCountry": "CI"
+          },
+          "email": "promotionit11@esatic.ci",
+          "sameAs": [
+            "https://www.facebook.com/promotionit11",
+            "https://www.instagram.com/promotionit11",
+            "https://www.linkedin.com/company/promotion-it11-esatic",
+            "https://www.youtube.com/@promotionit11"
+          ],
+          "parentOrganization": {
+            "@type": "EducationalOrganization",
+            "name": "ESATIC",
+            "url": "https://www.esatic.ci"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.it11-esatic.com/#website",
+          "url": "https://www.it11-esatic.com",
+          "name": "Promotion IT11 — ESATIC",
+          "description": "Site officiel de la Promotion IT11 de l'ESATIC — Abidjan, Côte d'Ivoire",
+          "publisher": {
+            "@id": "https://www.it11-esatic.com/#organization"
+          },
+          "inLanguage": "fr-CI",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.it11-esatic.com/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.it11-esatic.com/#webpage",
+          "url": "https://www.it11-esatic.com",
+          "name": "Promotion IT11 — ESATIC | La Génération qui Code l'Avenir",
+          "isPartOf": { "@id": "https://www.it11-esatic.com/#website" },
+          "about": { "@id": "https://www.it11-esatic.com/#organization" },
+          "description": "Découvrez la Promotion IT11 de l'ESATIC : événements, opportunités de stages et d'emploi, membres du bureau, galerie photo.",
+          "inLanguage": "fr-CI",
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.it11-esatic.com/" }
+            ]
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════
+         PERFORMANCE — PRECONNECT FONTS
+    ═══════════════════════════════════════ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
   </head>
+
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>Vous devez activer JavaScript pour utiliser ce site.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>
