@@ -416,7 +416,7 @@ const Hero = () => {
                 Mot du Président
               </span>
             </div>
-            <div style={{ margin: 0, fontSize: 12.5, color: C.text, lineHeight: 1.6, fontWeight: 600, fontStyle: "italic", textAlign: "justify" }}>
+            <div style={{ margin: 0, fontSize: 13, color: C.muted, lineHeight: 1.6, fontWeight: 400, fontStyle: "italic", textAlign: "justify" }}>
               "Bonjour chers camarades,<br />
               Je suis Yendoukoa Noël, étudiant en Master 1 CSIA. Si j’occupe aujourd’hui la fonction de président de promotion, c’est grâce à votre confiance, et je vous en suis profondément reconnaissant. Mon ambition est de voir notre promotion devenir un jour particulièrement dynamique et soudée."
             </div>
