@@ -4,6 +4,7 @@ import right from "../src/Images/right.png"
 import logo from "../src/Images/logo.png"
 import rand from "../src/Images/event2.png"
 import Gal1 from "../src/Images/Gal1.png"
+import president from "../src/Images/president.png"
 
 
 /* ─────────────────────────────────────────
@@ -1046,7 +1047,7 @@ const Opportunites = () => {
    MEMBRES — RESPONSIVE
 ══════════════════════════════════════════ */
 const BUREAU = [
-  { titre: "Président(e)", nom: "[ Nom Prénom ]", role: "Bureau de la Promotion" },
+  { titre: "Président(e)", nom: "Yendoukoa Noel", role: "Bureau de la Promotion" },
   { titre: "Vice-Président(e)", nom: "[ Nom Prénom ]", role: "Bureau de la Promotion" },
   { titre: "Secrétaire Général(e)", nom: "[ Nom Prénom ]", role: "Bureau de la Promotion" },
   { titre: "Trésorier(ère)", nom: "[ Nom Prénom ]", role: "Bureau de la Promotion" },
@@ -1076,7 +1077,7 @@ const Membres = () => {
                 onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-6px)"; e.currentTarget.style.boxShadow = "0 18px 42px rgba(26,108,232,.13)"; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 2px 12px rgba(26,108,232,.05)"; }}>
                 <div style={{ height: isMobile ? 150 : 200, background: C.light, borderBottom: "1px dashed rgba(26,108,232,.13)", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
-                  <img src="" alt={m.titre} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", position: "absolute", inset: 0 }} />
+                  <img src={i==0 &&president} alt={m.titre} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", position: "absolute", inset: 0 }} />
                   <Ic n="user" size={44} color="rgba(26,108,232,.18)" />
                 </div>
                 <div style={{ padding: "14px 15px" }}>
