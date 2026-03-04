@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 import right from "../src/Images/right.png"
 import logo from "../src/Images/logo.png"
+import rand from "../src/Images/event2.png"
 
 
 /* ─────────────────────────────────────────
@@ -303,18 +304,84 @@ const Hero = () => {
         </p>
 
         {/* ── PROCHAIN EVENT CTA ── */}
-        <div style={{ background:"linear-gradient(135deg,#0a2a60,#1a6ce8)",borderRadius:18,padding: isMobile ? "16px 18px" : "20px 24px",marginBottom:32,display:"flex",alignItems:"center",justifyContent:"space-between",gap:14,boxShadow:"0 12px 36px rgba(26,108,232,.22)",flexWrap: isMobile ? "wrap" : "nowrap" }}>
-          <div>
-            <div style={{ display:"flex",alignItems:"center",gap:6,fontSize:10,letterSpacing:2,textTransform:"uppercase",color:"rgba(255,255,255,.65)",marginBottom:6 }}>
-              <Ic n="zap" size={12} color="#facc15" /> Prochain événement
-            </div>
-            <div style={{ fontFamily:"'Bebas Neue',sans-serif",fontSize:24,letterSpacing:2,color:"#fff",lineHeight:1 }}>Randonnée IT11</div>
-            <div style={{ fontSize:12,color:"rgba(255,255,255,.7)",marginTop:4 }}>Date à confirmer · Bientôt...</div>
-          </div>
-          <Btn href="#evenements" variant="white" style={{ whiteSpace:"nowrap",padding:"10px 20px",fontSize:12 }}>
-            Participer <Ic n="arrowRight" size={14} color={C.blue} />
-          </Btn>
-        </div>
+    <div
+  style={{
+    position: "relative",
+    borderRadius: 18,
+    padding: isMobile ? "16px 18px" : "20px 24px",
+    marginBottom: 32,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 14,
+    flexWrap: isMobile ? "wrap" : "nowrap",
+    overflow: "hidden",
+    backgroundImage: `url(${rand})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+  {/* Overlay sombre pour améliorer la lisibilité */}
+  <div
+    style={{
+      position: "absolute",
+      inset: 0,
+      background: "linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55))",
+      zIndex: 0,
+    }}
+  />
+
+  {/* Contenu */}
+  <div style={{ position: "relative", zIndex: 1 }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 6,
+        fontSize: 10,
+        letterSpacing: 2,
+        textTransform: "uppercase",
+        color: "rgba(255,255,255,.75)",
+        marginBottom: 6,
+      }}
+    >
+      <Ic n="zap" size={12} color="#facc15" /> Prochain événement
+    </div>
+
+    <div
+      style={{
+        fontFamily: "'Bebas Neue',sans-serif",
+        fontSize: 24,
+        letterSpacing: 2,
+        color: "#fff",
+        lineHeight: 1,
+      }}
+    >
+      Randonnée IT11
+    </div>
+
+    <div
+      style={{
+        fontSize: 12,
+        color: "rgba(255,255,255,.8)",
+        marginTop: 4,
+      }}
+    >
+      Date à confirmer · Bientôt...
+    </div>
+  </div>
+
+  <div style={{ position: "relative", zIndex: 1 }}>
+    <Btn
+      href="#evenements"
+      variant="white"
+      style={{ whiteSpace: "nowrap", padding: "10px 20px", fontSize: 12 }}
+    >
+      Participer <Ic n="arrowRight" size={14} color={C.blue} />
+    </Btn>
+  </div>
+</div>
 
         <div style={{ display:"flex",gap:12,flexWrap:"wrap" }}>
           <Btn href="#membres" style={{ fontSize: isMobile ? 12 : 13 }}>Découvrir la Promo <Ic n="arrowRight" size={15} /></Btn>
@@ -392,14 +459,43 @@ const About = () => {
           <p style={{ fontSize:14.5,color:C.muted,lineHeight:1.9,marginBottom:28 }}>
             Nous sommes une génération de passionnés, créateurs et innovateurs, portant fièrement les valeurs de rigueur, d'excellence et d'esprit d'équipe. Notre vision : faire du numérique un levier de développement pour l'Afrique.
           </p>
-          <div style={{ display:"flex",gap:10,flexWrap:"wrap",marginBottom:28 }}>
-            {[{ icon:"code",label:"Génie Logiciel" },{ icon:"network",label:"Réseaux & Sys." },{ icon:"globe",label:"Cybersécurité" }].map(v=>(
-              <div key={v.label} style={{ display:"flex",alignItems:"center",gap:7,background:C.light,borderRadius:10,padding:"7px 13px" }}>
-                <Ic n={v.icon} size={15} color={C.bright} />
-                <span style={{ fontSize:12,fontWeight:600,color:C.blue }}>{v.label}</span>
-              </div>
-            ))}
-          </div>
+       <div style={{ display:"flex", gap:10, flexWrap:"wrap", marginBottom:28 }}>
+  {[
+    { icon:"shield", label:"Cybersécurité & IA" },
+    { icon:"cpu", label:"Mobilité, Big Data & Systèmes" },
+    { icon:"database", label:"Big Data Intelligence (BIHAR)" },
+    { icon:"code", label:"Systèmes d’Information & Génie Logiciel" },
+    { icon:"network", label:"Réseaux & Télécom" },
+    { icon:"server", label:"Experts Réseaux, Infrastructures & Sécurité" },
+    { icon:"creditCard", label:"Finance & Technologie (FinTech)" },
+    { icon:"globe", label:"Marketing Digital" },
+  ].map(v => {
+    const maxLength = 12; // seuil avant de tronquer
+    const shortLabel =
+      v.label.length > maxLength
+        ? v.label.slice(0, maxLength) + "…"
+        : v.label;
+
+    return (
+      <div
+        key={v.label}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 7,
+          background: C.light,
+          borderRadius: 10,
+          padding: "7px 13px",
+        }}
+      >
+        <Ic n={v.icon} size={15} color={C.bright} />
+        <span style={{ fontSize: 12, fontWeight: 600, color: C.blue }}>
+          {shortLabel}
+        </span>
+      </div>
+    );
+  })}
+</div>
           <Btn href="#membres">Voir les membres <Ic n="arrowRight" size={15} /></Btn>
         </FadeIn>
 
@@ -484,7 +580,7 @@ const Evenements = () => {
 
                 {ev.image && !isMobile && (
                   <div style={{ position:"relative",background:"#1a2a1a",overflow:"hidden",minHeight:260 }}>
-                    <img src="/mnt/user-data/uploads/1772578349222_image.png" alt="Randonnée IT11" style={{ width:"100%",height:"100%",objectFit:"cover",display:"block",opacity:.9 }} />
+                    <img src={rand} alt="Randonnée IT11" style={{ width:"100%",height:"100%",objectFit:"cover",display:"block",opacity:.9 }} />
                     {ev.highlight && (
                       <div style={{ position:"absolute",top:16,left:16,background:"#16a34a",color:"#fff",fontSize:10,fontWeight:800,letterSpacing:2,textTransform:"uppercase",padding:"5px 14px",borderRadius:20,display:"flex",alignItems:"center",gap:5 }}>
                         <span style={{ width:6,height:6,background:"#fff",borderRadius:"50%",animation:"pulse 1.5s infinite" }} /> À venir
@@ -496,7 +592,7 @@ const Evenements = () => {
                 {/* Mobile image banner */}
                 {ev.image && isMobile && (
                   <div style={{ position:"relative",height:180,background:"#1a2a1a",overflow:"hidden" }}>
-                    <img src="/mnt/user-data/uploads/1772578349222_image.png" alt="Randonnée IT11" style={{ width:"100%",height:"100%",objectFit:"cover",display:"block",opacity:.9 }} />
+                    <img src={rand} alt="Randonnée IT11" style={{ width:"100%",height:"100%",objectFit:"cover",display:"block",opacity:.9 }} />
                     {ev.highlight && (
                       <div style={{ position:"absolute",top:12,left:12,background:"#16a34a",color:"#fff",fontSize:10,fontWeight:800,letterSpacing:2,textTransform:"uppercase",padding:"4px 12px",borderRadius:20,display:"flex",alignItems:"center",gap:5 }}>
                         <span style={{ width:6,height:6,background:"#fff",borderRadius:"50%",animation:"pulse 1.5s infinite" }} /> À venir
